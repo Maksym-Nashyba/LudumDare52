@@ -70,7 +70,7 @@ namespace Asteroids
         
         private void SetUpLayerGFX(AsteroidLayer layer, LayerMeshSculptor sculptor)
         {
-            layer.GetComponent<AsteroidLayerGFX>().SetUp(sculptor, layer.Material.RenderMaterial);
+            layer.GetComponent<AsteroidLayerGFX>().SetUp(sculptor, layer);
         }
 
         private void SetField(Asteroid asteroid, string fieldName, object value)

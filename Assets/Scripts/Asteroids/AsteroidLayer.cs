@@ -1,16 +1,18 @@
 ﻿using System;
 using Misc;
+using UnityEngine;
 
 namespace Asteroids
 {
-    public class AsteroidLayer
+    public class AsteroidLayer : MonoBehaviour
     {
+        public event Action<AsteroidLayer> Destroyed;
         public MaterialType Type => Material.Type;
-        public readonly float Richness;
-        public readonly AsteroidMaterial Material;
+        public float Richness { get; private set; }
+        public AsteroidMaterial Material { get; private set; }
         public bool IsDestroyed { get; private set;}
         
-        public AsteroidLayer(AsteroidMaterial material, float richness)
+        public void SetUp(AsteroidMaterial material, float richness)
         {
             Material = material;
             Richness = richness;
@@ -20,6 +22,7 @@ namespace Asteroids
         {
             if (IsDestroyed) throw new InvalidOperationException("Already destroyed");
             IsDestroyed = true;
+            Destroyed?.Invoke(this);
         }
     }
 }

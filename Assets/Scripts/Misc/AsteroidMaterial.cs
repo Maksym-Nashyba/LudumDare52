@@ -13,5 +13,8 @@ namespace Misc
 
         public Rarity Rarity => _rarity;
         [SerializeField] private Rarity _rarity;
+
+        public Material RenderMaterial => _renderMaterial;
+        [SerializeField] private Material _renderMaterial;
     }
 }

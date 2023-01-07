@@ -1,7 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Reflection;
+using Asteroids.Meshes;
 using Misc;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -12,10 +13,20 @@ namespace Asteroids
     {
         private AsteroidMaterial[] _materials;
         [SerializeField] private GameObject _asteroidPrefab;
+        [SerializeField] private GameObject _asteroidLayerPrefab;
 
         private void Awake()
         {
             _materials = LoadMaterials();
+        }
+
+        private void Start()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                Asteroid asteroid = BuildAsteroid();
+                asteroid.transform.position = Vector3.up * i;
+            }
         }
 
         public Asteroid BuildAsteroid()
@@ -24,24 +35,28 @@ namespace Asteroids
 
             Size size = PickSize();
             SetField(asteroid, "_size", size);
-            Queue<AsteroidLayer> layers = BuildLayers(size);
+            Queue<AsteroidLayer> layers = BuildLayers(size, asteroid.transform);
             SetField(asteroid, "_asteroidLayers", layers);
 
+            asteroid.GetComponent<AsteroidMesh>().BuildMeshes(new Queue<AsteroidLayer>(layers));
             return asteroid;
         }
 
-        private Queue<AsteroidLayer> BuildLayers(Size size)
+        private Queue<AsteroidLayer> BuildLayers(Size size, Transform asteroidTransform)
         {
             int layerCount = (int) size;
             Queue<AsteroidLayer> result = new Queue<AsteroidLayer>();
             for (int i = 0; i < layerCount; i++)
             {
                 AsteroidMaterial material = PickMaterial();
-                AsteroidLayer layer = new AsteroidLayer(material, 1f-EaseFunctions.EaseInCirc(Random.Range(0f, 1f)));
+                AsteroidLayer layer = Instantiate(_asteroidLayerPrefab, asteroidTransform).GetComponent<AsteroidLayer>();
+                layer.SetUp(material, 1f-EaseFunctions.EaseInCirc(Random.Range(0f, 1f)));
                 result.Enqueue(layer);
             }
             return result;
         }
+        
+        
 
         private void SetField(Asteroid asteroid, string fieldName, object value)
         {

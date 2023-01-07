@@ -7,7 +7,7 @@ namespace Asteroids.Meshes
     {
         protected override Mesh Generate()
         {
-            return PrimitiveMeshLoader.GetMesh(Primitive.Sphere);
+           return PrimitiveMeshLoader.GetMesh(Primitive.Sphere);
         }
     }
 }

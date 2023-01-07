@@ -5,6 +5,6 @@
         Trash,
         Common,
         Rare,
-        VeryRare
+        Max
     }
 }

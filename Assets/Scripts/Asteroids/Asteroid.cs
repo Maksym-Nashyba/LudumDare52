@@ -1,9 +1,45 @@
+using System;
+using System.Collections.Generic;
+using Misc;
 using UnityEngine;
 
 namespace Asteroids
 {
     public class Asteroid : MonoBehaviour
     {
-        private AsteroidLayer[] _layers;
+        public event Action LayerDestroyed;
+
+        public Size Size    
+        {
+            get => _size;
+            private set => _size = value;
+        }
+        private Size _size;
+        public bool Destroyed { get; private set; }
+        private Queue<AsteroidLayer> _asteroidLayers;
+
+        public bool HasAnyLayers => _asteroidLayers.Count > 0;
+        
+        public AsteroidLayer GetOuterLayer()
+        {
+            if (!HasAnyLayers) throw new InvalidOperationException("There are no more layers");
+            return _asteroidLayers.Peek();
+        }
+
+        public void DestroyOuterLayer()
+        {
+            if (!HasAnyLayers) return;
+            AsteroidLayer outerLayer = _asteroidLayers.Dequeue();
+            outerLayer.Destroy();
+            LayerDestroyed?.Invoke();
+        }
+
+        public void DestroyAllLayers()
+        {
+            while (!Destroyed)
+            {
+                DestroyOuterLayer();
+            }
+        }
     }
 }

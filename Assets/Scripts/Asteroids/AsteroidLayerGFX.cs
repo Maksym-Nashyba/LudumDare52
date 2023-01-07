@@ -14,6 +14,7 @@ namespace Asteroids
             _meshSculptor = layerMeshSculptor;
             ApplyMaterial(material);
             _meshSculptor.Changed += OnMeshChanged;
+            _meshFilter.mesh = layerMeshSculptor.Mesh;
         }
 
         private void OnDestroy()

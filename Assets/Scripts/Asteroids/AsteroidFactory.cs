@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using Asteroids.Meshes;
 using Misc;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -50,13 +51,27 @@ namespace Asteroids
             {
                 AsteroidMaterial material = PickMaterial();
                 AsteroidLayer layer = Instantiate(_asteroidLayerPrefab, asteroidTransform).GetComponent<AsteroidLayer>();
-                layer.SetUp(material, 1f-EaseFunctions.EaseInCirc(Random.Range(0f, 1f)));
+                layer.SetUp(material, 1f-EaseFunctions.EaseInCirc(Random.Range(0f, 1f)), (AsteroidLayer.Depth)(2-i));
+                LayerMeshSculptor sculptor = SetUpLayerMeshSculptor(layer);
+                SetUpLayerGFX(layer, sculptor);
                 result.Enqueue(layer);
             }
             return result;
         }
+
+        private LayerMeshSculptor SetUpLayerMeshSculptor(AsteroidLayer layer)
+        {
+            LayerMeshSculptor sculptor = layer.LayerDepth > AsteroidLayer.Depth.Middle
+                ? layer.gameObject.AddComponent<CoreMeshSculptor>()
+                : layer.gameObject.AddComponent<ShellMeshSculptor>();
+            sculptor.Build();
+            return sculptor;
+        }
         
-        
+        private void SetUpLayerGFX(AsteroidLayer layer, LayerMeshSculptor sculptor)
+        {
+            layer.GetComponent<AsteroidLayerGFX>().SetUp(sculptor, layer.Material.RenderMaterial);
+        }
 
         private void SetField(Asteroid asteroid, string fieldName, object value)
         {

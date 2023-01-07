@@ -6,7 +6,7 @@ namespace Asteroids.Meshes
     public abstract class LayerMeshSculptor : MonoBehaviour
     {
         public event Action<Mesh> Changed;
-        protected Mesh Mesh { get; private set; }
+        public Mesh Mesh { get; private set; }
         
         public void Build()
         {

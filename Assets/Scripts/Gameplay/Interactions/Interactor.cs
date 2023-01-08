@@ -10,14 +10,26 @@ namespace Gameplay.Interactions
         public event Action Locked;
         public event Action Unlocked;
         [SerializeField] private Camera _camera;
+        private bool _locked;
+
+        private void Update()
+        {
+            if(_locked)return;
+            if(Input.GetKeyDown(KeyCode.F))Interact();
+        }
 
         public void Interact()
         {
             if (!Physics.Raycast(transform.position, 
                     _camera.transform.forward, out RaycastHit hit, 25f)) return;
             if(!hit.transform.gameObject.TryGetComponent(out IInteractable interactable)) return;
-            interactable.Interact(()=>Unlocked?.Invoke());
+            interactable.Interact(()=>
+            {
+                Unlocked?.Invoke();
+                _locked = false;
+            });
             Locked?.Invoke();
+            _locked = true;
         }
 
         public void ApplyTool(Tool tool)

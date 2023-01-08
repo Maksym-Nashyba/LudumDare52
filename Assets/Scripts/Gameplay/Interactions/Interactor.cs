@@ -13,12 +13,7 @@ namespace Gameplay.Interactions
         {
             tool = GetComponent<Tool>();
         }
-
-        private void Update()
-        {
-            if(Input.GetMouseButtonDown(0))ApplyTool(tool);
-        }
-
+        
         public void Interact()
         {
             if (!Physics.Raycast(transform.position, 

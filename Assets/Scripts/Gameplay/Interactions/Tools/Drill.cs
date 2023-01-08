@@ -11,6 +11,19 @@ namespace Gameplay.Interactions.Tools
         public float Strength => _strength;
         [SerializeField] private float _strength;
 
+        private Interactor _interactor;
+
+        protected override void Awake()
+        {
+            base.Awake();
+            _interactor = FindObjectOfType<Interactor>();
+        }
+
+        private void Update()
+        {
+           if(Input.GetKeyDown(0)) _interactor.ApplyTool(this);
+        }
+
         public override void Apply(Asteroid asteroid, Vector3 position)
         {
             DigHole(asteroid, Radius, Strength, position);

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 74913335289beee45822560e19a3c906
+guid: c80f5497f55675c478348fede7ad08b1
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -22,18 +22,18 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: DarkBrass
-    second: {fileID: 2100000, guid: 9c79c3860d6682848b2a809489b4c0eb, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
       name: DarkWood
-    second: {fileID: 2100000, guid: e5c2c242961ecdd44b631aeadb2c9f1f, type: 2}
+    second: {fileID: 2100000, guid: 6cb1e977167f2a54a8e7b3a7a257e72e, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Glass
     second: {fileID: 2100000, guid: aeaa1e1abb6f9a24b9f147f58f085052, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wallmaterial
+    second: {fileID: 2100000, guid: 6cb1e977167f2a54a8e7b3a7a257e72e, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

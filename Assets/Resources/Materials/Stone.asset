@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Stone
   _type: 0
+  _price: 5
   _rarity: 0
   _renderMaterial: {fileID: 2100000, guid: 649d79c257288e741b856f59c30a2968, type: 2}

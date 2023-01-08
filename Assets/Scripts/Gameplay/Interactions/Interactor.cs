@@ -11,6 +11,11 @@ namespace Gameplay.Interactions
         public event Action Unlocked;
         [SerializeField] private Camera _camera;
 
+        private void Update()
+        {
+            if(Input.GetKeyDown(KeyCode.E)) Interact();
+        }
+
         public void Interact()
         {
             if (!Physics.Raycast(transform.position, 

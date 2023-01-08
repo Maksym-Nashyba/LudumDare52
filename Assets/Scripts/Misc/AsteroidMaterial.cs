@@ -11,6 +11,9 @@ namespace Misc
         public MaterialType Type => _type;
         [SerializeField] private MaterialType _type;
 
+        public int Price => _price;
+        [SerializeField] private int _price;
+
         public Rarity Rarity => _rarity;
         [SerializeField] private Rarity _rarity;
 

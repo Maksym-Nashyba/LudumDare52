@@ -455,6 +455,7 @@ Transform:
   - {fileID: 1372331704}
   - {fileID: 1690069251}
   - {fileID: 1283295474}
+  - {fileID: 1373247832}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -500,6 +501,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1238306448}
   - component: {fileID: 1238306449}
+  - component: {fileID: 1238306450}
   m_Layer: 0
   m_Name: Interactor
   m_TagString: Untagged
@@ -535,6 +537,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _camera: {fileID: 1690069253}
+--- !u!114 &1238306450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1238306447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6638d661e56e49a3b761bb91a8a634b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _radius: 0.15
+  _strength: 0.2
 --- !u!1 &1283295473
 GameObject:
   m_ObjectHideFlags: 0
@@ -627,6 +643,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7ee291a5a6040caabc71ee993afe053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1373247831
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1373247832}
+  - component: {fileID: 1373247833}
+  m_Layer: 0
+  m_Name: ChunkPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1373247832
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1373247831}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1041824014}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1373247833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1373247831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1ad7e94106b4bb4a7b6b9873671ab8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _chunkPrefab: {fileID: 7301770457657526649, guid: 4f6b4b8c7369de446b483f2687785d0b,
+    type: 3}
+  _trashMaterial: {fileID: 11400000, guid: 7daeb4b21a3ef3f4a9669d0bf5f70fe6, type: 2}
 --- !u!1001 &1377310985
 PrefabInstance:
   m_ObjectHideFlags: 0

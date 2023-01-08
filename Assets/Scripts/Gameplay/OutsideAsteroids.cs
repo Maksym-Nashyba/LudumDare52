@@ -20,6 +20,14 @@ namespace Gameplay
             _currentIndex = 0;
         }
 
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.TryGetComponent(out Rigidbody rigidbody))
+            {
+                rigidbody.velocity *= -1f;
+            }
+        }
+
         public Asteroid GetNextAsteroid()
         {
             _currentIndex++;
@@ -32,7 +40,6 @@ namespace Gameplay
             if (_asteroids.Contains(asteroid))
             {
                 _asteroids.Remove(asteroid);
-                Destroy(asteroid.gameObject);
             }
             while (_asteroids.Count < _targetAsteroidCount)
             {

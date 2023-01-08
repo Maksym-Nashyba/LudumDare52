@@ -2,13 +2,14 @@
 using Asteroids;
 using UnityEngine;
 
-namespace Gameplay.Interactions
+namespace Gameplay.Interactions.GameplayMenus.AsteroidCatcher
 {
     public class AsteroidCatcher : MonoBehaviour, IInteractable
     {
         [SerializeField] private OutsideAsteroids _outsideAsteroids;
         [SerializeField] private Transform _cameraTransform;
         [SerializeField] private AsteroidCatcherDisplay _display;
+        [SerializeField] private CatchingLaser _laser;
         private Action _closeCallback;
         private Transform _cameraTarget;
         
@@ -42,7 +43,10 @@ namespace Gameplay.Interactions
 
         private void OnCatchButton()
         {
+            Asteroid asteroid = _cameraTarget.GetComponent<Asteroid>();
             Close();
+            _outsideAsteroids.RemoveAsteroid(asteroid);
+            _laser.Catch(asteroid);
         }
         
         private void Close()

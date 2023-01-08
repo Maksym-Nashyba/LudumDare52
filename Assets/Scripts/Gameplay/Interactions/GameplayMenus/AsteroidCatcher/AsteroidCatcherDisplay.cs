@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
-namespace Gameplay.Interactions
+namespace Gameplay.Interactions.GameplayMenus.AsteroidCatcher
 {
     public class AsteroidCatcherDisplay : MonoBehaviour
     {

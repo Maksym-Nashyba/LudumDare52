@@ -15,12 +15,7 @@ namespace Gameplay.Interactions
         private void Update()
         {
             if(_locked)return;
-            if(Input.GetKeyDown(KeyCode.F))Interact();
-        }
-
-        private void Update()
-        {
-            if(Input.GetKeyDown(KeyCode.E)) Interact();
+            if(Input.GetKeyDown(KeyCode.E))Interact();
         }
 
         public void Interact()

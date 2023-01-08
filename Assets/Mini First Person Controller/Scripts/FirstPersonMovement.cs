@@ -32,6 +32,8 @@ public class FirstPersonMovement : MonoBehaviour
     private void OnLocked()
     {
         _locked = true;
+        rigidbody.velocity = Vector3.zero;
+        rigidbody.angularVelocity = Vector3.zero;
     }
     
     private void OnUnlocked()

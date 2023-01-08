@@ -15,7 +15,14 @@ namespace Inventory
         {
             _materials = new Dictionary<AsteroidMaterial, int>();
         }
-        
+
+        private void Start()
+        {
+            AsteroidMaterial[] asteroidMaterials = Resources.LoadAll<AsteroidMaterial>("Materials/");
+            Add(asteroidMaterials[1], 5);
+            Add(asteroidMaterials[3], 14);
+        }
+
         public AsteroidMaterial[] GetMaterials()
         {
             return  _materials.Keys.ToArray();

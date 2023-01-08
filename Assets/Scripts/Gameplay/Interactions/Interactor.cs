@@ -8,7 +8,7 @@ namespace Gameplay.Interactions
     public class Interactor : MonoBehaviour
     {
         public event Action Locked;
-        public event Action UnLocked;
+        public event Action Unlocked;
         [SerializeField] private Camera _camera;
 
         public void Interact()
@@ -16,7 +16,7 @@ namespace Gameplay.Interactions
             if (!Physics.Raycast(transform.position, 
                     _camera.transform.forward, out RaycastHit hit, 25f)) return;
             if(!hit.transform.gameObject.TryGetComponent(out IInteractable interactable)) return;
-            interactable.Interact(()=>UnLocked?.Invoke());
+            interactable.Interact(()=>Unlocked?.Invoke());
             Locked?.Invoke();
         }
 
@@ -31,7 +31,7 @@ namespace Gameplay.Interactions
         public Transform RaycastSearch<T>(float range)
         {
             if (!Physics.Raycast(transform.position, 
-                    _camera.transform.forward, out RaycastHit hit, 25f)) return null;
+                    _camera.transform.forward, out RaycastHit hit, range)) return null;
             if(!hit.transform.gameObject.TryGetComponent(out T searched)) return null;
             return hit.transform;
         }

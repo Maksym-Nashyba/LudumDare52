@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Gameplay.Interactions;
+using UnityEngine;
 
 public class FirstPersonLook : MonoBehaviour
 {
@@ -10,7 +11,36 @@ public class FirstPersonLook : MonoBehaviour
     Vector2 velocity;
     Vector2 frameVelocity;
 
+    private Interactor _interactor;
+    private bool _locked;
 
+    void Awake()
+    {
+        _interactor = FindObjectOfType<Interactor>();
+        _interactor.Locked += OnLocked;
+        _interactor.Unlocked += OnUnlocked;
+    }
+
+    private void OnLocked()
+    {
+        _locked = true;
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
+    }
+    
+    private void OnUnlocked()
+    {
+        _locked = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
+    private void OnDestroy()
+    {
+        _interactor.Locked -= OnLocked;
+        _interactor.Unlocked -= OnUnlocked;
+    }
+    
     void Reset()
     {
         // Get the character from the FirstPersonMovement in parents.
@@ -25,6 +55,7 @@ public class FirstPersonLook : MonoBehaviour
 
     void Update()
     {
+        if(_locked)return;
         // Get smooth velocity.
         Vector2 mouseDelta = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
         Vector2 rawFrameVelocity = Vector2.Scale(mouseDelta, Vector2.one * sensitivity);

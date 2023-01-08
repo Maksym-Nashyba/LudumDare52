@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using Gameplay.Interactions;
 using UnityEngine;
 
 public class FirstPersonMovement : MonoBehaviour
@@ -10,21 +12,42 @@ public class FirstPersonMovement : MonoBehaviour
     public bool IsRunning { get; private set; }
     public float runSpeed = 9;
     public KeyCode runningKey = KeyCode.LeftShift;
-
+    
     Rigidbody rigidbody;
     /// <summary> Functions to override movement speed. Will use the last added override. </summary>
-    public List<System.Func<float>> speedOverrides = new List<System.Func<float>>();
+    public List<Func<float>> speedOverrides = new();
 
-
+    private Interactor _interactor;
+    private bool _locked;
 
     void Awake()
     {
         // Get the rigidbody on this.
         rigidbody = GetComponent<Rigidbody>();
+        _interactor = FindObjectOfType<Interactor>();
+        _interactor.Locked += OnLocked;
+        _interactor.Unlocked += OnUnlocked;
+    }
+
+    private void OnLocked()
+    {
+        _locked = true;
+    }
+    
+    private void OnUnlocked()
+    {
+        _locked = false;
+    }
+
+    private void OnDestroy()
+    {
+        _interactor.Locked -= OnLocked;
+        _interactor.Unlocked -= OnUnlocked;
     }
 
     void FixedUpdate()
     {
+        if(_locked)return;
         // Update IsRunning from input.
         IsRunning = canRun && Input.GetKey(runningKey);
 

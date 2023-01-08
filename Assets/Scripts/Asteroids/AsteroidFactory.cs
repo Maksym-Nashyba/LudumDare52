@@ -23,7 +23,10 @@ namespace Asteroids
 
         private void Start()
         {
-            InvokeRepeating(nameof(SpawnShit), 1f, 1f);
+            for (int i = 0; i < 5; i++)
+            {
+                SpawnShit();
+            }
         }
 
         private void SpawnShit()

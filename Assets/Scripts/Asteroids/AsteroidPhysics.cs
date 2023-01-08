@@ -1,10 +1,13 @@
-﻿using Asteroids.Meshes;
+﻿using System;
+using Asteroids.Meshes;
+using Gameplay.Interactions.Tools;
 using UnityEngine;
 
 namespace Asteroids
 {
     public class AsteroidPhysics : MonoBehaviour
     {
+        public event Action<Tool, Vector3> ToolApplied; 
         [SerializeField] private MeshCollider _collider;
         private Asteroid _asteroid;
         private LayerMeshSculptor _currentMeshSculptor;
@@ -33,8 +36,6 @@ namespace Asteroids
             _collider.sharedMesh = _currentMeshSculptor.Mesh;
             float scale = (float)(2-_asteroid.GetOuterLayer().LayerDepth+1) / 3f;
             _collider.transform.localScale = new Vector3(scale, scale, scale);
-            _collider.transform.localPosition = Vector3.zero;
-            _collider.transform.localRotation = Quaternion.identity;
         }
     
         private LayerMeshSculptor FindNextSculptor()

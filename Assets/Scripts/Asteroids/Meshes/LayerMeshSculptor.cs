@@ -22,5 +22,20 @@ namespace Asteroids.Meshes
             Mesh.MarkModified();
             Changed?.Invoke(Mesh);
         }
+
+        public void CarveHole(float radius, float strength, Vector3 localPosition)
+        {
+            Vector3[] vertices = Mesh.vertices;
+
+            for (int i = 0; i < vertices.Length; i++)
+            {
+                float distanceSquared = (vertices[i] - localPosition).sqrMagnitude;
+                if (distanceSquared > radius * radius) continue;
+                vertices[i] *= 1f-strength;
+            }
+
+            Mesh.vertices = vertices;
+            Apply();
+        }
     }
 }

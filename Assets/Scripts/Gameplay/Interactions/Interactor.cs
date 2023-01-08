@@ -1,4 +1,5 @@
-﻿using Gameplay.Interactions.Tools;
+﻿using Asteroids;
+using Gameplay.Interactions.Tools;
 using UnityEngine;
 
 namespace Gameplay.Interactions
@@ -30,8 +31,8 @@ namespace Gameplay.Interactions
         {
             if (!Physics.Raycast(transform.position, 
                     _camera.transform.forward, out RaycastHit hit, 25f)) return;
-            if(!hit.transform.gameObject.TryGetComponent(out ToolTarget toolTarget)) return;
-            toolTarget.ApplyTool(tool, hit.point);
+            if(!hit.transform.gameObject.TryGetComponent(out Asteroid asteroid)) return;
+            tool.Apply(asteroid, hit.point);
         }
     }
 }

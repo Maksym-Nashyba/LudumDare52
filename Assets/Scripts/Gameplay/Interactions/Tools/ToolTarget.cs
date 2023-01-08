@@ -22,18 +22,9 @@ namespace Gameplay.Interactions.Tools
 
         private void ApplyDrill(Drill drill, Vector3 interactionPoint)
         {
-            DigHole(drill.Radius, drill.Strength, interactionPoint);
-            _chunkPool.SpawnChunks(interactionPoint, 7, 
-                _asteroid.GetOuterLayer().Material, _asteroid.GetOuterLayer().Richness);
-            _asteroid.DamageOuterLayer(15);
+
         }
 
-        private void DigHole(float radius, float strength, Vector3 position)
-        {
-            LayerMeshSculptor sculptor = _asteroid.GetOuterLayer().GetComponent<LayerMeshSculptor>();
-            Vector3 localInteractionPoint = transform.InverseTransformPoint(position);
-            localInteractionPoint /= (float)(2-_asteroid.GetOuterLayer().LayerDepth+1) / 3f;
-            sculptor.CarveHole(radius, strength, localInteractionPoint);
-        }
+
     }
 }

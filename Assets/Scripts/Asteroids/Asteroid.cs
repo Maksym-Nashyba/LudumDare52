@@ -1,12 +1,14 @@
 using System;
 using System.Collections.Generic;
+using Gameplay.Interactions.Dragging;
 using Misc;
 using UnityEngine;
 
 namespace Asteroids
 {
-    public class Asteroid : MonoBehaviour
+    public class Asteroid : MonoBehaviour, IDraggable
     {
+        [SerializeField] private Rigidbody _rigidbody;
         public event Action LayerDestroyed;
 
         public Size Size    
@@ -40,6 +42,11 @@ namespace Asteroids
             outerLayer.Destroy();
             IsDestroyed = !HasAnyLayers;
             LayerDestroyed?.Invoke();
+        }
+
+        public Rigidbody GetRigidbody()
+        {
+            return _rigidbody;
         }
     }
 }

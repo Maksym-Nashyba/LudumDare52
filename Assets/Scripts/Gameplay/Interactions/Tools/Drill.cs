@@ -21,11 +21,12 @@ namespace Gameplay.Interactions.Tools
 
         private void Update()
         {
-           if(Input.GetKeyDown(0)) _interactor.ApplyTool(this);
+           if(Input.GetMouseButtonDown(0)) _interactor.ApplyTool(this);
         }
 
         public override void Apply(Asteroid asteroid, Vector3 position)
         {
+            if(asteroid.IsDestroyed) return;
             DigHole(asteroid, Radius, Strength, position);
             ChunkPool.SpawnChunks(position, 7, 
                 asteroid.GetOuterLayer().Material, asteroid.GetOuterLayer().Richness);

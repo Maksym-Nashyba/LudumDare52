@@ -29,5 +29,13 @@ namespace Gameplay.Interactions
             if(!hit.transform.gameObject.TryGetComponent(out Asteroid asteroid)) return;
             tool.Apply(asteroid, hit.point);
         }
+
+        public Transform RaycastSearch<T>(float range)
+        {
+            if (!Physics.Raycast(transform.position, 
+                    _camera.transform.forward, out RaycastHit hit, 25f)) return null;
+            if(!hit.transform.gameObject.TryGetComponent(out T searched)) return null;
+            return hit.transform;
+        }
     }
 }

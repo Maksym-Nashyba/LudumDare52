@@ -26,20 +26,20 @@ namespace Asteroids
             return _asteroidLayers.Peek();
         }
 
+        public void DamageOuterLayer(int damage)
+        {
+            AsteroidLayer outerLayer = GetOuterLayer();
+            outerLayer.Damage(damage);
+            if(outerLayer.Health<=0) DestroyOuterLayer();
+        }
+        
         public void DestroyOuterLayer()
         {
             if (!HasAnyLayers) return;
             AsteroidLayer outerLayer = _asteroidLayers.Pop();
             outerLayer.Destroy();
+            IsDestroyed = !HasAnyLayers;
             LayerDestroyed?.Invoke();
-        }
-
-        public void DestroyAllLayers()
-        {
-            while (!IsDestroyed)
-            {
-                DestroyOuterLayer();
-            }
         }
     }
 }

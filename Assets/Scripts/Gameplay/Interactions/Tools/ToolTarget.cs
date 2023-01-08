@@ -1,5 +1,4 @@
-﻿using System;
-using Asteroids;
+﻿using Asteroids;
 using Asteroids.Chunks;
 using Asteroids.Meshes;
 using UnityEngine;
@@ -26,6 +25,7 @@ namespace Gameplay.Interactions.Tools
             DigHole(drill.Radius, drill.Strength, interactionPoint);
             _chunkPool.SpawnChunks(interactionPoint, 7, 
                 _asteroid.GetOuterLayer().Material, _asteroid.GetOuterLayer().Richness);
+            _asteroid.DamageOuterLayer(15);
         }
 
         private void DigHole(float radius, float strength, Vector3 position)

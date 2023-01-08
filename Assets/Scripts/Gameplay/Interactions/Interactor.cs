@@ -18,6 +18,11 @@ namespace Gameplay.Interactions
             if(Input.GetKeyDown(KeyCode.F))Interact();
         }
 
+        private void Update()
+        {
+            if(Input.GetKeyDown(KeyCode.E)) Interact();
+        }
+
         public void Interact()
         {
             if (!Physics.Raycast(transform.position, 

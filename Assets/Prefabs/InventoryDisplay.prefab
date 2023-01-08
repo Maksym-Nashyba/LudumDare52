@@ -154,10 +154,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b384787faa434f4e8eb1a98bc9fd591a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inventory: {fileID: 0}
-  _inventoryItemsList: {fileID: 1037889434204878927}
-  _InventoryItemPrefab: {fileID: 661307723148044164, guid: 7a87f07317f496249a916611a68c5848,
+  LayoutGroupTable: {fileID: 1037889434204878927}
+  MenuItemPrefab: {fileID: 661307723148044164, guid: 7a87f07317f496249a916611a68c5848,
     type: 3}
+  _playerInventory: {fileID: 0}
 --- !u!1 &6461735174428182427
 GameObject:
   m_ObjectHideFlags: 0

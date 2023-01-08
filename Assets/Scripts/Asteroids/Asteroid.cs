@@ -48,5 +48,20 @@ namespace Asteroids
         {
             return _rigidbody;
         }
+
+        public AsteroidMaterial GetRarestMaterial()
+        {
+            AsteroidLayer[] layers = _asteroidLayers.ToArray();
+            AsteroidMaterial rarestMaterial = layers[0].Material;
+            foreach (AsteroidLayer layer in layers)
+            {
+                if (layer.Material.Rarity < rarestMaterial.Rarity)
+                {
+                    rarestMaterial = layer.Material;
+                }
+            }
+
+            return rarestMaterial;
+        }
     }
 }

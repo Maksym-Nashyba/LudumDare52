@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Asteroids;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -11,12 +12,34 @@ namespace Gameplay
         [SerializeField] private BoxCollider _spawnBox;
         [SerializeField] private int _targetAsteroidCount;
         private List<Asteroid> _asteroids;
-
+        private int _currentIndex;
+        
         private void Start()
         {
             _asteroids = SpawnFirstAsteroids();
+            _currentIndex = 0;
         }
 
+        public Asteroid GetNextAsteroid()
+        {
+            _currentIndex++;
+            if (_currentIndex == _asteroids.Count) _currentIndex = 0;
+            return _asteroids[_currentIndex];
+        }
+        
+        public void RemoveAsteroid(Asteroid asteroid)
+        {
+            if (_asteroids.Contains(asteroid))
+            {
+                _asteroids.Remove(asteroid);
+                Destroy(asteroid.gameObject);
+            }
+            while (_asteroids.Count < _targetAsteroidCount)
+            {
+                _asteroids.Add(SpawnAsteroid());
+            }
+        }
+        
         private List<Asteroid> SpawnFirstAsteroids()
         {
             List<Asteroid> result = new List<Asteroid>();
@@ -33,7 +56,7 @@ namespace Gameplay
             Rigidbody asteroidRigidbody = asteroid.GetRigidbody();
             asteroidRigidbody.useGravity = false;
             asteroidRigidbody.position = PickPointInBounds();
-            asteroidRigidbody.velocity = (asteroidRigidbody.position - PickPointInBounds()).normalized * Random.Range(0f, 2f);
+            asteroidRigidbody.velocity = (PickPointInBounds() - asteroidRigidbody.position).normalized * Random.Range(0f, 2f);
             return asteroid;
         }
 

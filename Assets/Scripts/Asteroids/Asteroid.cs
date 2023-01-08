@@ -15,8 +15,8 @@ namespace Asteroids
             private set => _size = value;
         }
         private Size _size;
-        public bool Destroyed { get; private set; }
-        private Queue<AsteroidLayer> _asteroidLayers;
+        public bool IsDestroyed { get; private set; }
+        private Stack<AsteroidLayer> _asteroidLayers;
 
         public bool HasAnyLayers => _asteroidLayers.Count > 0;
         
@@ -29,14 +29,14 @@ namespace Asteroids
         public void DestroyOuterLayer()
         {
             if (!HasAnyLayers) return;
-            AsteroidLayer outerLayer = _asteroidLayers.Dequeue();
+            AsteroidLayer outerLayer = _asteroidLayers.Pop();
             outerLayer.Destroy();
             LayerDestroyed?.Invoke();
         }
 
         public void DestroyAllLayers()
         {
-            while (!Destroyed)
+            while (!IsDestroyed)
             {
                 DestroyOuterLayer();
             }

@@ -23,11 +23,13 @@ namespace Asteroids
 
         private void Start()
         {
-            for (int i = 0; i < 10; i++)
-            {
-                Asteroid asteroid = BuildAsteroid();
-                asteroid.transform.position = Vector3.up * i;
-            }
+            InvokeRepeating(nameof(SpawnShit), 1f, 1f);
+        }
+
+        private void SpawnShit()
+        {
+            Asteroid asteroid = BuildAsteroid();
+            asteroid.transform.position = Vector3.up;
         }
 
         public Asteroid BuildAsteroid()
@@ -36,17 +38,16 @@ namespace Asteroids
 
             Size size = PickSize();
             SetField(asteroid, "_size", size);
-            Queue<AsteroidLayer> layers = BuildLayers(size, asteroid.transform);
+            Stack<AsteroidLayer> layers = BuildLayers(size, asteroid.transform);
             SetField(asteroid, "_asteroidLayers", layers);
-
-            asteroid.GetComponent<AsteroidMesh>().BuildMeshes(new Queue<AsteroidLayer>(layers));
+            SetUpPhysics(asteroid);
             return asteroid;
         }
 
-        private Queue<AsteroidLayer> BuildLayers(Size size, Transform asteroidTransform)
+        private Stack<AsteroidLayer> BuildLayers(Size size, Transform asteroidTransform)
         {
             int layerCount = (int) size;
-            Queue<AsteroidLayer> result = new Queue<AsteroidLayer>();
+            Stack<AsteroidLayer> result = new Stack<AsteroidLayer>();
             for (int i = 0; i < layerCount; i++)
             {
                 AsteroidMaterial material = PickMaterial();
@@ -54,7 +55,7 @@ namespace Asteroids
                 layer.SetUp(material, 1f-EaseFunctions.EaseInCirc(Random.Range(0f, 1f)), (AsteroidLayer.Depth)(2-i));
                 LayerMeshSculptor sculptor = SetUpLayerMeshSculptor(layer);
                 SetUpLayerGFX(layer, sculptor);
-                result.Enqueue(layer);
+                result.Push(layer);
             }
             return result;
         }
@@ -71,6 +72,11 @@ namespace Asteroids
         private void SetUpLayerGFX(AsteroidLayer layer, LayerMeshSculptor sculptor)
         {
             layer.GetComponent<AsteroidLayerGFX>().SetUp(sculptor, layer);
+        }
+        
+        private void SetUpPhysics(Asteroid asteroid)
+        {
+            asteroid.GetComponent<AsteroidPhysics>().SetUp(asteroid);
         }
 
         private void SetField(Asteroid asteroid, string fieldName, object value)

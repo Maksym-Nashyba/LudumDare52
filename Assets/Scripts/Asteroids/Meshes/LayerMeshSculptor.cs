@@ -12,6 +12,7 @@ namespace Asteroids.Meshes
         {
             Mesh = Generate();
             Mesh.MarkDynamic();
+            Mesh.MarkModified();
         }
         
         protected abstract Mesh Generate();

@@ -9,11 +9,7 @@ namespace Misc
         [SerializeField] protected VerticalLayoutGroup LayoutGroupTable;
         [SerializeField] protected GameObject MenuItemPrefab;
         protected List<GameObject> MenuItems;
-
-        public void ToggleInventoryShown()
-        {
-            gameObject.SetActive(!gameObject.activeSelf);
-        }
+        
         protected virtual void BuildLayoutGroupTable()
         {
             if (MenuItems != null) ClearLayoutGroup();

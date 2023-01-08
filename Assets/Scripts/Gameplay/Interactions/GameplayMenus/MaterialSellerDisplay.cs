@@ -8,6 +8,18 @@ namespace Gameplay.Interactions.GameplayMenus
     {
         [SerializeField] private MaterialSeller _materialSeller;
 
+        protected override void Awake()
+        {
+            base.Awake();
+            _materialSeller.Interacted += BuildLayoutGroupTable;
+        }
+
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            _materialSeller.Interacted -= BuildLayoutGroupTable;
+        }
+
         protected override void DisplayItem(AsteroidMaterial material, int materialAmount)
         {
             GameObject inventoryItemGameObject = Instantiate(MenuItemPrefab, LayoutGroupTable.transform);

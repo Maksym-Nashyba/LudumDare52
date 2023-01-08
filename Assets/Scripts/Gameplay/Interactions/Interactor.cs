@@ -23,13 +23,13 @@ namespace Gameplay.Interactions
             if (!Physics.Raycast(transform.position, 
                     _camera.transform.forward, out RaycastHit hit, 25f)) return;
             if(!hit.transform.gameObject.TryGetComponent(out IInteractable interactable)) return;
+            Locked?.Invoke();
+            _locked = true;
             interactable.Interact(()=>
             {
                 Unlocked?.Invoke();
                 _locked = false;
             });
-            Locked?.Invoke();
-            _locked = true;
         }
 
         public void ApplyTool(Tool tool)

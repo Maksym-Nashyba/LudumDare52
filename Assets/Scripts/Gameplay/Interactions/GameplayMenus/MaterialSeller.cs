@@ -7,20 +7,22 @@ namespace Gameplay.Interactions.GameplayMenus
 {
     public class MaterialSeller : MonoBehaviour, IInteractable
     {
+        public event Action Interacted;
         [SerializeField] private MaterialSellerDisplay _display;
         [SerializeField] private PlayerInventory _playerInventory;
-        private Action _closeCallback;
+        public Action CloseCallback;
 
         public void Interact(Action closeCallback)
         {
-            _closeCallback = closeCallback;
+            CloseCallback = closeCallback;
             _display.Show();
+            Interacted?.Invoke();
         }
 
         public void Hide()
         {
             _display.Hide();
-            _closeCallback.Invoke();
+            CloseCallback.Invoke();
         }
 
         public void SellMaterial(AsteroidMaterial material, int sellAmount)

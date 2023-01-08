@@ -7,16 +7,21 @@ namespace Inventory
     {
         [SerializeField] protected PlayerInventory _playerInventory;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             _playerInventory.Changed += BuildLayoutGroupTable;
         }
 
-        private void OnDestroy() 
+        protected virtual void OnDestroy() 
         {
             _playerInventory.Changed -= BuildLayoutGroupTable;
         }
 
+        public void ToggleInventoryShown()
+        {
+            gameObject.SetActive(!gameObject.activeSelf);
+        }
+        
         protected override void BuildLayoutGroupTable()
         {
             base.BuildLayoutGroupTable();

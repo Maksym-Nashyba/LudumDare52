@@ -6,11 +6,14 @@ using UnityEngine;
 
 namespace Inventory
 {
-    public class Inventory : MonoBehaviour
+    public class PlayerInventory : MonoBehaviour
     {
         public event Action Changed;
+        public event Action<int> BalanceChanged;
+        private int _balance;
         private Dictionary<AsteroidMaterial, int> _materials;
         
+
         private void Awake()
         {
             _materials = new Dictionary<AsteroidMaterial, int>();
@@ -18,9 +21,18 @@ namespace Inventory
 
         private void Start()
         {
+            _balance = 0;
             AsteroidMaterial[] asteroidMaterials = Resources.LoadAll<AsteroidMaterial>("Materials/");
             Add(asteroidMaterials[1], 5);
             Add(asteroidMaterials[3], 14);
+        }
+
+        public int GetBalance() => _balance;
+
+        public void AddMoney(int amount)
+        {
+            _balance += Mathf.Clamp(amount, 0, int.MaxValue);
+            BalanceChanged?.Invoke(_balance);
         }
 
         public AsteroidMaterial[] GetMaterials()
@@ -38,6 +50,7 @@ namespace Inventory
             if (!_materials.ContainsKey(material))
             {
                 _materials.Add(material, amount);
+                Changed?.Invoke();
                 return;
             }
             _materials[material] += amount;

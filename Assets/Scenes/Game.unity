@@ -610,7 +610,7 @@ GameObject:
   - component: {fileID: 1372331704}
   - component: {fileID: 1372331705}
   m_Layer: 0
-  m_Name: Inventory
+  m_Name: PlayerInventory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -700,6 +700,11 @@ PrefabInstance:
     - target: {fileID: 1037889435100955241, guid: a885428fd3424a8429edea432fe6d19d,
         type: 3}
       propertyPath: _inventory
+      value: 
+      objectReference: {fileID: 1372331705}
+    - target: {fileID: 1037889435100955241, guid: a885428fd3424a8429edea432fe6d19d,
+        type: 3}
+      propertyPath: _playerInventory
       value: 
       objectReference: {fileID: 1372331705}
     - target: {fileID: 1037889435100955241, guid: a885428fd3424a8429edea432fe6d19d,

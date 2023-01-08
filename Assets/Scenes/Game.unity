@@ -1177,6 +1177,7 @@ GameObject:
   m_Component:
   - component: {fileID: 716907723}
   - component: {fileID: 716907724}
+  - component: {fileID: 716907725}
   m_Layer: 0
   m_Name: OutsideAsteroids
   m_TagString: Untagged
@@ -1212,6 +1213,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 28.324934, y: 14.619419, z: 32.387634}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &716907725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 716907722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10dc87733b864afabb672e420cc96d17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _asteroidFactory: {fileID: 1283295475}
+  _spawnBox: {fileID: 716907724}
+  _targetAsteroidCount: 12
 --- !u!1 &717337141 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -1247464147998645957, guid: c80f5497f55675c478348fede7ad08b1,

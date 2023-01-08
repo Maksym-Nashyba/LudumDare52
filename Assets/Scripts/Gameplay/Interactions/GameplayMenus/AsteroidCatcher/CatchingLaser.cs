@@ -70,7 +70,7 @@ namespace Gameplay.Interactions.GameplayMenus.AsteroidCatcher
         
         private Task MoveAsteroidToTurnPoint(Transform asteroidTransform)
         {
-            return _asyncExecutor.EachFrame(0.7f, t =>
+            return _asyncExecutor.EachFrame(1.25f, t =>
             {
                 Vector3 lerpedPosition = Vector3.Lerp(asteroidTransform.position, _turnPoint.position, t);
                 asteroidTransform.position = lerpedPosition;

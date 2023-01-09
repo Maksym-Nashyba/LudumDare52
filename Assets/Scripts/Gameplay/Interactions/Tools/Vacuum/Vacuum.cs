@@ -4,6 +4,7 @@ using System.Linq;
 using Asteroids;
 using Asteroids.Chunks;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Gameplay.Interactions.Tools
 {
@@ -13,6 +14,8 @@ namespace Gameplay.Interactions.Tools
         [SerializeField] private SphereCollider _suckZone;
         [SerializeField] private SphereCollider _consumeZone;
         [SerializeField] private int _containerSize;
+        [SerializeField] private UnityEvent _sucked;
+        [SerializeField] private UnityEvent _spit;
         public List<Chunk> _container { get; private set; }
         private float _cooldownSeconds;
         private Collider[] _colliderBuffer;
@@ -47,6 +50,7 @@ namespace Gameplay.Interactions.Tools
             if(_container.Count >= _container.Capacity || InCD) return;
             chunk.gameObject.SetActive(false);
             _container.Add(chunk);
+            _sucked?.Invoke();
         }
 
         private bool InCD => _cooldownSeconds > 0.005f;
@@ -77,6 +81,7 @@ namespace Gameplay.Interactions.Tools
             chunk.gameObject.SetActive(true);
             chunk.transform.position = _consumeZone.transform.position;
             chunk.GetRigidbody().AddForce(transform.forward * 100f, ForceMode.VelocityChange);
+            _spit?.Invoke();
             
             _cooldownSeconds += 0.10f;
         }

@@ -12,7 +12,8 @@ namespace Gameplay.OreBoxes
         
         private void OnTriggerEnter(Collider other)
         {
-            if (other.TryGetComponent(out ICollectableOre collectable))
+            if (other.attachedRigidbody == null)return;
+            if (other.attachedRigidbody.TryGetComponent(out ICollectableOre collectable))
             {
                 if(collectable.GetMaterialType() == _materialType)collectable.GetCollected(_playerInventory);
             }

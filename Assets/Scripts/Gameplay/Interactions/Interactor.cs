@@ -1,5 +1,6 @@
 ﻿using System;
 using Asteroids;
+using Gameplay.Interactions.GameplayMenus.UIPanels;
 using Gameplay.Interactions.Tools;
 using UnityEngine;
 
@@ -10,7 +11,19 @@ namespace Gameplay.Interactions
         public event Action Locked;
         public event Action Unlocked;
         [SerializeField] private Camera _camera;
+        [SerializeField] private StartUIPanel _startPanel;
         public bool IsLocked { get; private set; }
+
+        private void Start()
+        {
+            Locked?.Invoke();
+            IsLocked = true;
+            _startPanel.Interact(()=>
+            {
+                Unlocked?.Invoke();
+                IsLocked = false;
+            });
+        }
 
         private void Update()
         {

@@ -15,6 +15,7 @@ namespace Misc
             if (MenuItems != null) ClearLayoutGroup();
             MenuItems = new List<GameObject>();
         }
+        
         protected virtual void ClearLayoutGroup()
         {
             foreach (GameObject item in MenuItems)

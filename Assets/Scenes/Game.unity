@@ -3467,6 +3467,7 @@ MonoBehaviour:
   _nameValue: {fileID: 1254743780}
   _layersValue: {fileID: 713069453}
   _rarityValue: {fileID: 1579496199}
+  _upgrades: {fileID: 1799712686}
 --- !u!1 &1048234362
 GameObject:
   m_ObjectHideFlags: 0

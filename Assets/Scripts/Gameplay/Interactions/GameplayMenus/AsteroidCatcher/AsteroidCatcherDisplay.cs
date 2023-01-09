@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Asteroids;
+using Gameplay.Interactions.GameplayMenus.UpgradeShop;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,7 +19,7 @@ namespace Gameplay.Interactions.GameplayMenus.AsteroidCatcher
         [SerializeField] private TextMeshProUGUI _nameValue;
         [SerializeField] private TextMeshProUGUI _layersValue;
         [SerializeField] private TextMeshProUGUI _rarityValue;
-
+        [SerializeField] private UpgradeStation _upgrades;
         private Action nextButtonCallback;
         private Action catchButtonCallback;
         
@@ -38,7 +39,7 @@ namespace Gameplay.Interactions.GameplayMenus.AsteroidCatcher
         {
             _nameValue.SetText(RandomString(Random.Range(5, 9)));            
             _layersValue.SetText(""+(int)asteroid.Size);
-            _rarityValue.SetText(asteroid.GetRarestMaterial().Rarity.ToString());
+            _rarityValue.SetText(_upgrades.ScannerUpgrade.IsCrafted ? asteroid.GetRarestMaterial().Rarity.ToString() : "scanner_not_installed");
         }
 
         public void OnNextButton()

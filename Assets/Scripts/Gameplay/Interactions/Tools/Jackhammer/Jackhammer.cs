@@ -51,9 +51,9 @@ namespace Gameplay.Interactions.Tools
         {
             if(asteroid.IsDestroyed) return;
             DigHole(asteroid, Radius, Strength, position);
-            ChunkPool.SpawnChunks(position, _reward, 
+            ChunkPool.SpawnChunks(position, Reward, 
                 asteroid.GetOuterLayer().Material, asteroid.GetOuterLayer().Richness);
-            asteroid.DamageOuterLayer(_damage);         
+            asteroid.DamageOuterLayer(Damade);
             _hit?.Invoke();
         }
 
@@ -61,7 +61,7 @@ namespace Gameplay.Interactions.Tools
         {
             LayerMeshSculptor sculptor = asteroid.GetOuterLayer().GetComponent<LayerMeshSculptor>();
             Vector3 localInteractionPoint = asteroid.transform.InverseTransformPoint(position);
-            localInteractionPoint /= (float)(2-asteroid.GetOuterLayer().LayerDepth+1) / 3f;
+            localInteractionPoint /= (float)(3-asteroid.GetOuterLayer().LayerDepth) / 3f;
             sculptor.CarveHole(radius, strength, localInteractionPoint);
         }
         

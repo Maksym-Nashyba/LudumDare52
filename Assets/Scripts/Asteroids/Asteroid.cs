@@ -5,6 +5,7 @@ using Gameplay.OreBoxes;
 using Inventory;
 using Misc;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Asteroids
 {
@@ -13,6 +14,8 @@ namespace Asteroids
         [SerializeField] private Rigidbody _rigidbody;
         public event Action Destroyed;
         public event Action LayerDestroyed;
+
+        [SerializeField] private UnityEvent _asteroidCrush;
 
         public Size Size => _size;
         private Size _size;
@@ -41,7 +44,12 @@ namespace Asteroids
             outerLayer.Destroy();
             IsDestroyed = !HasAnyLayers;
             LayerDestroyed?.Invoke();
-            if(IsDestroyed) Destroyed?.Invoke();
+            _asteroidCrush?.Invoke();
+            if (IsDestroyed)
+            {
+                Destroyed?.Invoke();
+                _asteroidCrush?.Invoke();
+            }
         }
 
         public Rigidbody GetRigidbody()

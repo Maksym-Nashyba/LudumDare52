@@ -14,10 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _isCrafted: 0
   _name: Vacuum upgrade
-  _icon: {fileID: 0}
+  _icon: {fileID: 21300000, guid: 481f8c098f63e614aae5737c4aeb13b7, type: 3}
   _recipe:
-  - _material: {fileID: 11400000, guid: 0bb7a04a0f01a0948b3dc6fd0ad0ba90, type: 2}
-    _amount: 25
   - _material: {fileID: 11400000, guid: 7daeb4b21a3ef3f4a9669d0bf5f70fe6, type: 2}
-    _amount: 52
-  _description: This will upgrade your vacuum
+    _amount: 150
+  _description: Doubles vacuum's capacity

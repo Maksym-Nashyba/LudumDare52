@@ -90,7 +90,7 @@ namespace Gameplay.Interactions.Tools
             _container.Remove(chunk);
             chunk.gameObject.SetActive(true);
             chunk.transform.position = _consumeZone.transform.position;
-            chunk.GetRigidbody().AddForce(transform.forward * 100f, ForceMode.VelocityChange);
+            chunk.GetRigidbody().AddForce(transform.forward * 8f, ForceMode.VelocityChange);
             _spit?.Invoke();
             
             _cooldownSeconds += 0.10f;

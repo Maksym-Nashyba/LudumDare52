@@ -14,10 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _isCrafted: 0
   _name: Drill upgrade
-  _icon: {fileID: 0}
+  _icon: {fileID: 21300000, guid: 85a01df5bd73fdc4296867ee16a54e44, type: 3}
   _recipe:
-  - _material: {fileID: 11400000, guid: a4eb22b38401d3c44b25ec89357be6bc, type: 2}
-    _amount: 2
   - _material: {fileID: 11400000, guid: 14f07929366b9ac4d91f5c42bdb440e9, type: 2}
-    _amount: 12
-  _description: This will upgrade your drill
+    _amount: 50
+  _description: Doubles drill's effectiveness

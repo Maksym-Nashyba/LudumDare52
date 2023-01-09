@@ -50,7 +50,12 @@ namespace Gameplay.Interactions.Tools
             {
                 _asteroid.DestroyOuterLayer();
             }
-            GetComponentInChildren<MeshRenderer>().enabled = false;
+
+            MeshRenderer[] meshRenderers = GetComponentsInChildren<MeshRenderer>();
+            foreach (MeshRenderer meshRenderer in meshRenderers)
+            {
+                meshRenderer.enabled = false;
+            }
             _exploded?.Invoke();
             Destroy(this);
         }

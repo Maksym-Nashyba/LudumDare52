@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _isCrafted: 0
   _name: Scanner upgrade
-  _icon: {fileID: 0}
+  _icon: {fileID: 21300000, guid: 87c5fb5efd818c94a8ca483ba20cee50, type: 3}
   _recipe:
-  - _material: {fileID: 11400000, guid: d20ed8571cd264447970dd96a59a8b20, type: 2}
+  - _material: {fileID: 11400000, guid: a4eb22b38401d3c44b25ec89357be6bc, type: 2}
     _amount: 3
   - _material: {fileID: 11400000, guid: 0bb7a04a0f01a0948b3dc6fd0ad0ba90, type: 2}
-    _amount: 52
+    _amount: 15
   - _material: {fileID: 11400000, guid: e8df1ff4d6e9eaa438f03e16bfd514b3, type: 2}
     _amount: 1
-  _description: This will upgrade your scanner
+  _description: Lets you evaluate asteroid's value before catching it

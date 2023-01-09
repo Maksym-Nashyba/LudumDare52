@@ -15,7 +15,7 @@ MonoBehaviour:
   _spawns: 1
   _name: Iron
   _type: 0
-  _price: 0
+  _price: 300
   _rarity: 1
   _sprite: {fileID: 0}
   _renderMaterial: {fileID: 2100000, guid: 596cdae6f683b5a4ab22a7d286a69848, type: 2}

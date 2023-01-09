@@ -15,7 +15,7 @@ MonoBehaviour:
   _spawns: 1
   _name: Platinum
   _type: 0
-  _price: 0
+  _price: 750
   _rarity: 2
   _sprite: {fileID: 0}
   _renderMaterial: {fileID: 2100000, guid: 070b265d6dfe689448dbfbefb4bfc50e, type: 2}

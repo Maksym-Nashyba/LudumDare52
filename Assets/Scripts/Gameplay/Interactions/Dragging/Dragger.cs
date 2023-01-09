@@ -13,11 +13,11 @@ namespace Gameplay.Interactions.Dragging
         {
             if (_draggedObject == null)
             {
-                if (Input.GetMouseButtonDown(1)) _draggedObject = TryPickUp();
+                if (Input.GetKeyDown(KeyCode.E)) _draggedObject = TryPickUp();
             }
             else
             {
-                if (Input.GetMouseButtonUp(1)) Drop();
+                if (Input.GetKeyUp(KeyCode.E)) Drop();
             }
         }
 

@@ -15,7 +15,7 @@ MonoBehaviour:
   _spawns: 0
   _name: Big Diamond
   _type: 1
-  _price: 0
+  _price: 50000
   _rarity: 3
   _sprite: {fileID: 0}
   _renderMaterial: {fileID: 2100000, guid: fd3f99ac09f0f0940acd2f4518e29f70, type: 2}

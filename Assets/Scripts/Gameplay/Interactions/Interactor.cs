@@ -10,32 +10,32 @@ namespace Gameplay.Interactions
         public event Action Locked;
         public event Action Unlocked;
         [SerializeField] private Camera _camera;
-        private bool _locked;
+        public bool IsLocked { get; private set; }
 
         private void Update()
         {
-            if(_locked)return;
+            if(IsLocked)return;
             if(Input.GetKeyDown(KeyCode.E))Interact();
         }
 
         public void Interact()
         {
             if (!Physics.Raycast(transform.position, 
-                    _camera.transform.forward, out RaycastHit hit, 25f)) return;
+                    _camera.transform.forward, out RaycastHit hit, 5f)) return;
             if(!hit.transform.gameObject.TryGetComponent(out IInteractable interactable)) return;
             Locked?.Invoke();
-            _locked = true;
+            IsLocked = true;
             interactable.Interact(()=>
             {
                 Unlocked?.Invoke();
-                _locked = false;
+                IsLocked = false;
             });
         }
 
         public void ApplyTool(Tool tool)
         {
             if (!Physics.Raycast(transform.position, 
-                    _camera.transform.forward, out RaycastHit hit, 25f)) return;
+                    _camera.transform.forward, out RaycastHit hit, 5f)) return;
             if(!hit.transform.gameObject.TryGetComponent(out Asteroid asteroid)) return;
             tool.Apply(asteroid, hit.point);
         }

@@ -15,9 +15,9 @@ MonoBehaviour:
   _spawns: 1
   _name: Diamond
   _type: 1
-  _price: 0
+  _price: 1500
   _rarity: 3
   _sprite: {fileID: 0}
   _renderMaterial: {fileID: 2100000, guid: fd3f99ac09f0f0940acd2f4518e29f70, type: 2}
-  _biggerChunk: {fileID: 0}
-  _largeChunk: {fileID: 0}
+  _biggerChunk: {fileID: 11400000, guid: a4eb22b38401d3c44b25ec89357be6bc, type: 2}
+  _largeChunk: {fileID: 11400000, guid: e8df1ff4d6e9eaa438f03e16bfd514b3, type: 2}

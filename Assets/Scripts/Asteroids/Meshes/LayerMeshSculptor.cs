@@ -33,7 +33,7 @@ namespace Asteroids.Meshes
                 if (distanceSquared > radius * radius) continue;
                 vertices[i] *= 1f-strength;
             }
-
+            
             Mesh.vertices = vertices;
             Apply();
         }

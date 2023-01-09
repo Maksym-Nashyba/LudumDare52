@@ -18,9 +18,6 @@ namespace Inventory
         {
             _materials = new Dictionary<AsteroidMaterial, int>();
             _balance = 0;
-            AsteroidMaterial[] asteroidMaterials = Resources.LoadAll<AsteroidMaterial>("Materials/");
-            Add(asteroidMaterials[1], 5);
-            Add(asteroidMaterials[3], 14);
         }
 
         public int GetBalance() => _balance;

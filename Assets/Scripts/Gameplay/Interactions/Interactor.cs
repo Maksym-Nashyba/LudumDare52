@@ -12,6 +12,8 @@ namespace Gameplay.Interactions
         public event Action Unlocked;
         [SerializeField] private Camera _camera;
         [SerializeField] private StartUIPanel _startPanel;
+        [SerializeField] private EndGameScreen _winScreen;
+        [SerializeField] private EndGameScreen _lossScreen;
         public bool IsLocked { get; private set; }
 
         private void Start()
@@ -23,6 +25,8 @@ namespace Gameplay.Interactions
                 Unlocked?.Invoke();
                 IsLocked = false;
             });
+
+            FindObjectOfType<GameLoop.GameLoop>().Ended += OnGameEnded;
         }
 
         private void Update()
@@ -59,6 +63,34 @@ namespace Gameplay.Interactions
                     _camera.transform.forward, out RaycastHit hit, range)) return null;
             if(!hit.transform.gameObject.TryGetComponent(out T searched)) return null;
             return hit.transform;
+        }
+
+        private void OnGameEnded(bool result)
+        {
+            if(result) ShowWinScreen();
+            else ShowLossScreen();
+        }
+        
+        public void ShowWinScreen()
+        {
+            Locked?.Invoke();
+            IsLocked = true;
+            _winScreen.Interact(()=>
+            {
+                Unlocked?.Invoke();
+                IsLocked = false;
+            });
+        }
+        
+        public void ShowLossScreen()
+        {
+            Locked?.Invoke();
+            IsLocked = true;
+            _lossScreen.Interact(()=>
+            {
+                Unlocked?.Invoke();
+                IsLocked = false;
+            });
         }
     }
 }

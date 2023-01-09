@@ -1,6 +1,5 @@
 ﻿using System;
 using Gameplay.Interactions.GameplayMenus.UpgradeShop;
-using UnityEditor.Rendering.Universal;
 using UnityEngine;
 
 namespace Gameplay.Interactions.Tools

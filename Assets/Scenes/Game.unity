@@ -5582,6 +5582,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 682878863468657507, guid: 11aaea5348574644a9eb4f4504fcce3f,
         type: 3}
+      propertyPath: _upgrades
+      value: 
+      objectReference: {fileID: 1799712686}
+    - target: {fileID: 682878863468657507, guid: 11aaea5348574644a9eb4f4504fcce3f,
+        type: 3}
       propertyPath: _hit.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}

@@ -1,5 +1,7 @@
-﻿using Asteroids;
+﻿using System;
+using Asteroids;
 using Asteroids.Meshes;
+using Gameplay.Interactions.GameplayMenus.UpgradeShop;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -11,6 +13,11 @@ namespace Gameplay.Interactions.Tools
         [SerializeField] private float _radius;
         public float Strength => _strength;
         [SerializeField] private float _strength;
+        public int Damade => _damage;
+        [SerializeField] private int _damage;
+        public int Reward => _reward;
+        [SerializeField] private int _reward;
+        [SerializeField] private UpgradeStation _upgrades;
         
         public float CurrentExtend { get; private set; }
         private Interactor _interactor;
@@ -21,6 +28,7 @@ namespace Gameplay.Interactions.Tools
         {
             base.Awake();
             _interactor = FindObjectOfType<Interactor>();
+            _upgrades.DrillUpgrade.Crafted += OnDrillUpgrade;
         }
 
         private void Update()
@@ -43,9 +51,9 @@ namespace Gameplay.Interactions.Tools
         {
             if(asteroid.IsDestroyed) return;
             DigHole(asteroid, Radius, Strength, position);
-            ChunkPool.SpawnChunks(position, 5, 
+            ChunkPool.SpawnChunks(position, _reward, 
                 asteroid.GetOuterLayer().Material, asteroid.GetOuterLayer().Richness);
-            asteroid.DamageOuterLayer(8);         
+            asteroid.DamageOuterLayer(_damage);         
             _hit?.Invoke();
         }
 
@@ -55,6 +63,14 @@ namespace Gameplay.Interactions.Tools
             Vector3 localInteractionPoint = asteroid.transform.InverseTransformPoint(position);
             localInteractionPoint /= (float)(2-asteroid.GetOuterLayer().LayerDepth+1) / 3f;
             sculptor.CarveHole(radius, strength, localInteractionPoint);
+        }
+        
+        private void OnDrillUpgrade()
+        {
+            _upgrades.DrillUpgrade.Crafted -= OnDrillUpgrade;
+            _damage *= 2;
+            _reward *= 2;
+            _radius *= 1.3f;
         }
     }
 }

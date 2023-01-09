@@ -1689,6 +1689,40 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 734899787}
     m_Modifications:
+    - target: {fileID: 451508265, guid: 207da4dc9388fe346a543d10e99fd09e, type: 3}
+      propertyPath: m_Spacing.x
+      value: 24.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 451508265, guid: 207da4dc9388fe346a543d10e99fd09e, type: 3}
+      propertyPath: m_Spacing.y
+      value: 21.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 451508265, guid: 207da4dc9388fe346a543d10e99fd09e, type: 3}
+      propertyPath: m_StartAxis
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 451508265, guid: 207da4dc9388fe346a543d10e99fd09e, type: 3}
+      propertyPath: m_CellSize.x
+      value: 952.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 451508265, guid: 207da4dc9388fe346a543d10e99fd09e, type: 3}
+      propertyPath: m_CellSize.y
+      value: 198.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 451508265, guid: 207da4dc9388fe346a543d10e99fd09e, type: 3}
+      propertyPath: m_ChildAlignment
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 255821995004550183, guid: 207da4dc9388fe346a543d10e99fd09e,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 2399.0586
+      objectReference: {fileID: 0}
+    - target: {fileID: 255821995004550183, guid: 207da4dc9388fe346a543d10e99fd09e,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 975.1179
+      objectReference: {fileID: 0}
     - target: {fileID: 884372490945798971, guid: 207da4dc9388fe346a543d10e99fd09e,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1804,25 +1838,10 @@ PrefabInstance:
       propertyPath: _playerInventory
       value: 
       objectReference: {fileID: 1372331705}
-    - target: {fileID: 7817315819223780186, guid: 207da4dc9388fe346a543d10e99fd09e,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 558657685}
-    - target: {fileID: 7817315819223780186, guid: 207da4dc9388fe346a543d10e99fd09e,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Hide
-      objectReference: {fileID: 0}
     - target: {fileID: 8753025750719244962, guid: 207da4dc9388fe346a543d10e99fd09e,
         type: 3}
       propertyPath: m_Name
       value: MaterialSellerDisplay
-      objectReference: {fileID: 0}
-    - target: {fileID: 8753025750719244962, guid: 207da4dc9388fe346a543d10e99fd09e,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 207da4dc9388fe346a543d10e99fd09e, type: 3}

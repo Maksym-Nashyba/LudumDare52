@@ -1,4 +1,5 @@
-﻿using Inventory;
+﻿using System;
+using Inventory;
 using Misc;
 using UnityEngine;
 
@@ -12,6 +13,11 @@ namespace Gameplay.Interactions.GameplayMenus.MaterialSelling
         {
             base.Awake();
             _materialSeller.Interacted += BuildLayoutGroupTable;
+        }
+
+        private void Update()
+        {
+            if(Input.GetKeyDown(KeyCode.Escape))_materialSeller.Hide();
         }
 
         protected override void OnDestroy()

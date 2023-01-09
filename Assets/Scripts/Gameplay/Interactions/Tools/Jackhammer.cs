@@ -28,7 +28,11 @@ namespace Gameplay.Interactions.Tools
         {
             if (Input.GetMouseButton(0))
             {
+                _currentSpeed = Mathf.Clamp01(_currentSpeed += Time.deltaTime / 1.2f);
+                CurrentExtend += _currentSpeed * Time.deltaTime / 0.4f;
+                if(CurrentExtend < 1f) return;
                 _interactor.ApplyTool(this);
+                CurrentExtend = 0;
             }
             else
             {
@@ -38,16 +42,6 @@ namespace Gameplay.Interactions.Tools
 
         public override void Apply(Asteroid asteroid, Vector3 position)
         {
-            _currentSpeed = Mathf.Clamp01(_currentSpeed += Time.deltaTime / 1.2f);
-            CurrentExtend += _currentSpeed * Time.deltaTime / 0.4f;
-            
-            if(CurrentExtend < 1f) return;
-            Hit(asteroid, position);
-            CurrentExtend = 0;
-        }
-
-        private void Hit(Asteroid asteroid, Vector3 position)
-        {
             if(asteroid.IsDestroyed) return;
             DigHole(asteroid, Radius, Strength, position);
             ChunkPool.SpawnChunks(position, 5, 
@@ -55,7 +49,7 @@ namespace Gameplay.Interactions.Tools
             asteroid.DamageOuterLayer(8);         
             _hit?.Invoke();
         }
-        
+
         private void DigHole(Asteroid asteroid, float radius, float strength, Vector3 position)
         {
             LayerMeshSculptor sculptor = asteroid.GetOuterLayer().GetComponent<LayerMeshSculptor>();

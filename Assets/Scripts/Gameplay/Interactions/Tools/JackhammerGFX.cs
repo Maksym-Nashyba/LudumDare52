@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using Misc;
+using UnityEngine;
 
 namespace Gameplay.Interactions.Tools
 {
@@ -8,7 +10,10 @@ namespace Gameplay.Interactions.Tools
         [SerializeField] private Transform _drillTransform;
         [SerializeField] private Transform _closeTransform;
         [SerializeField] private Transform _farTransform;
-        
-        
+
+        private void Update()
+        {
+            _drillTransform.position = Vector3.Lerp(_closeTransform.position, _farTransform.position, EaseFunctions.EaseInCirc(_jackhammer.CurrentExtend));
+        }
     }
 }

@@ -7,8 +7,18 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Glow
+    second: {fileID: 2100000, guid: 7c6ae3ae941bc0e46a165abce08283b9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Material
     second: {fileID: 2100000, guid: accc0729198d61b44a471049e4f8b32c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Transparent
+    second: {fileID: 2100000, guid: aeaa1e1abb6f9a24b9f147f58f085052, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

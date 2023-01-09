@@ -1,18 +1,23 @@
-﻿using Asteroids;
+﻿using System.Net.NetworkInformation;
+using Asteroids;
 using Asteroids.Meshes;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Gameplay.Interactions.Tools
 {
-    public class Drill : Tool
+    public class Jackhammer : Tool
     {
         public float Radius => _radius;
         [SerializeField] private float _radius;
         public float Strength => _strength;
         [SerializeField] private float _strength;
-
+        
+        public float CurrentExtend { get; private set; }
         private Interactor _interactor;
-
+        private float _currentSpeed;
+        [SerializeField] private UnityEvent _hit;
+        
         protected override void Awake()
         {
             base.Awake();
@@ -21,16 +26,34 @@ namespace Gameplay.Interactions.Tools
 
         private void Update()
         {
-           if(Input.GetMouseButtonDown(0)) _interactor.ApplyTool(this);
+            if (Input.GetMouseButton(0))
+            {
+                _interactor.ApplyTool(this);
+            }
+            else
+            {
+                _currentSpeed = Mathf.Clamp01(_currentSpeed -= Time.deltaTime / 1.2f);
+            }
         }
 
         public override void Apply(Asteroid asteroid, Vector3 position)
         {
+            _currentSpeed = Mathf.Clamp01(_currentSpeed += Time.deltaTime / 1.2f);
+            CurrentExtend += _currentSpeed * Time.deltaTime / 0.4f;
+            
+            if(CurrentExtend < 1f) return;
+            Hit(asteroid, position);
+            CurrentExtend = 0;
+        }
+
+        private void Hit(Asteroid asteroid, Vector3 position)
+        {
             if(asteroid.IsDestroyed) return;
             DigHole(asteroid, Radius, Strength, position);
-            ChunkPool.SpawnChunks(position, 7, 
+            ChunkPool.SpawnChunks(position, 5, 
                 asteroid.GetOuterLayer().Material, asteroid.GetOuterLayer().Richness);
-            asteroid.DamageOuterLayer(15);
+            asteroid.DamageOuterLayer(8);         
+            _hit?.Invoke();
         }
         
         private void DigHole(Asteroid asteroid, float radius, float strength, Vector3 position)

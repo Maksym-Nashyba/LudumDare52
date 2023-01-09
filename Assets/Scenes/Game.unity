@@ -5572,8 +5572,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 682878863468657507, guid: 11aaea5348574644a9eb4f4504fcce3f,
         type: 3}
+      propertyPath: _damage
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 682878863468657507, guid: 11aaea5348574644a9eb4f4504fcce3f,
+        type: 3}
       propertyPath: _radius
       value: 0.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 682878863468657507, guid: 11aaea5348574644a9eb4f4504fcce3f,
+        type: 3}
+      propertyPath: _reward
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 682878863468657507, guid: 11aaea5348574644a9eb4f4504fcce3f,
         type: 3}

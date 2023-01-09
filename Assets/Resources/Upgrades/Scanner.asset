@@ -12,8 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 065c90c25e68470c9cc1e7bfd6e6cc58, type: 3}
   m_Name: Scanner
   m_EditorClassIdentifier: 
-  _isBought: 0
-  _name: 
+  _isCrafted: 0
+  _name: Scanner upgrade
   _icon: {fileID: 0}
-  _recipe: []
-  _description: 
+  _recipe:
+  - _material: {fileID: 11400000, guid: d20ed8571cd264447970dd96a59a8b20, type: 2}
+    _amount: 3
+  - _material: {fileID: 11400000, guid: 0bb7a04a0f01a0948b3dc6fd0ad0ba90, type: 2}
+    _amount: 52
+  - _material: {fileID: 11400000, guid: e8df1ff4d6e9eaa438f03e16bfd514b3, type: 2}
+    _amount: 1
+  _description: This will upgrade your scanner

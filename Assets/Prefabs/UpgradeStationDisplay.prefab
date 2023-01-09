@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6974213661595840709}
   - component: {fileID: 9113719936011130313}
   m_Layer: 0
-  m_Name: UpgradeStation
+  m_Name: UpgradeStationDisplay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -25,8 +25,8 @@ namespace Misc
 
         public void Craft()
         {
-            Crafted?.Invoke();
             _isCrafted = true;
+            Crafted?.Invoke();
         }
     }
 }

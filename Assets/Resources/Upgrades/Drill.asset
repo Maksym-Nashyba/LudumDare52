@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 065c90c25e68470c9cc1e7bfd6e6cc58, type: 3}
   m_Name: Drill
   m_EditorClassIdentifier: 
-  _isBought: 0
-  _name: 
+  _isCrafted: 0
+  _name: Drill upgrade
   _icon: {fileID: 0}
-  _recipe: []
-  _description: 
+  _recipe:
+  - _material: {fileID: 11400000, guid: a4eb22b38401d3c44b25ec89357be6bc, type: 2}
+    _amount: 2
+  - _material: {fileID: 11400000, guid: 14f07929366b9ac4d91f5c42bdb440e9, type: 2}
+    _amount: 12
+  _description: This will upgrade your drill

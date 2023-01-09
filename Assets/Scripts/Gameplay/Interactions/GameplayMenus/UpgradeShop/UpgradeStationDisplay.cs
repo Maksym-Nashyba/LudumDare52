@@ -1,4 +1,5 @@
-﻿using Inventory;
+﻿using System;
+using Inventory;
 using Misc;
 using UnityEngine;
 
@@ -12,6 +13,10 @@ namespace Gameplay.Interactions.GameplayMenus.UpgradeShop
         private void Awake()
         {
             SubscribeAllMethods();
+        }
+
+        private void Start()
+        {
             BuildLayoutGroupTable();
             Hide();
         }
@@ -53,11 +58,21 @@ namespace Gameplay.Interactions.GameplayMenus.UpgradeShop
         private void DisplayItem(Upgrade upgrade)
         {
             GameObject inventoryItemGameObject = Instantiate(MenuItemPrefab, LayoutGroupTable.transform);
-            inventoryItemGameObject.GetComponent<UpgradeStationItem>().Display(upgrade, (() =>
+            UpgradeStationItem upgradeStationItem = inventoryItemGameObject.GetComponent<UpgradeStationItem>();
+            if (upgrade.IsCrafted || !_inventory.HasEnoughMaterials(upgrade.Recipe))
             {
-                if (!_inventory.HasEnoughMaterials(upgrade.Recipe)) return;
-                _upgradeStation.CraftUpgrade(upgrade);
-            }));
+                upgradeStationItem.Display(upgrade);
+                upgradeStationItem.ChangeButtonInteractability(false);
+            }
+            else
+            {
+                upgradeStationItem.Display(upgrade, (() =>
+                {
+                    if (!_inventory.HasEnoughMaterials(upgrade.Recipe)) return;
+                    _upgradeStation.CraftUpgrade(upgrade);
+                }));
+                upgradeStationItem.ChangeButtonInteractability(true);
+            }
             MenuItems.Add(inventoryItemGameObject);
         }
 

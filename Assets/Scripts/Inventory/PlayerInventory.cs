@@ -17,10 +17,6 @@ namespace Inventory
         private void Awake()
         {
             _materials = new Dictionary<AsteroidMaterial, int>();
-        }
-
-        private void Start()
-        {
             _balance = 0;
             AsteroidMaterial[] asteroidMaterials = Resources.LoadAll<AsteroidMaterial>("Materials/");
             Add(asteroidMaterials[1], 5);
@@ -70,7 +66,6 @@ namespace Inventory
         {
             foreach (RecipePart recipePart in recipe)
             {
-                
                 if(recipePart.Amount > GetAmount(recipePart.Material)) return false;
             }
             return true;

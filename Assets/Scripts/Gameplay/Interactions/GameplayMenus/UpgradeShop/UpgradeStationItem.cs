@@ -24,6 +24,14 @@ namespace Gameplay.Interactions.GameplayMenus.UpgradeShop
             DisplayRequiredMaterials(upgrade);
             _craftButton.onClick.AddListener(action);
         }
+        
+        public void Display(Upgrade upgrade)
+        {
+            _upgradeIcon.sprite = upgrade.Icon; 
+            _upgradeName.text = upgrade.Name;
+            _description.text = upgrade.Description;
+            DisplayRequiredMaterials(upgrade);
+        }
 
         public void DisplayRequiredMaterials(Upgrade upgrade)
         {
@@ -32,6 +40,11 @@ namespace Gameplay.Interactions.GameplayMenus.UpgradeShop
                 GameObject materialItemGameObject = Instantiate(_materialItemPrefab, _materialList.transform);
                 materialItemGameObject.GetComponent<InventoryItem>().Display(recipePart.Material, recipePart.Amount);
             }
+        }
+
+        public void ChangeButtonInteractability(bool state)
+        {
+            _craftButton.interactable = state;
         }
     }
 }

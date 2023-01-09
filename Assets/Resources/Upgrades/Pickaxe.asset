@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 065c90c25e68470c9cc1e7bfd6e6cc58, type: 3}
   m_Name: Pickaxe
   m_EditorClassIdentifier: 
-  _isBought: 0
-  _name: 
+  _isCrafted: 0
+  _name: Pickaxe upgrade
   _icon: {fileID: 0}
-  _recipe: []
-  _description: 
+  _recipe:
+  - _material: {fileID: 11400000, guid: 7daeb4b21a3ef3f4a9669d0bf5f70fe6, type: 2}
+    _amount: 275
+  _description: This will upgrade your pickaxe

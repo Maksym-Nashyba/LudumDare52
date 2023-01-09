@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
 using Inventory;
 using UnityEngine;
 
@@ -9,19 +11,25 @@ namespace Gameplay.GameLoop
         public event Action Started;
         public event Action<bool> Ended;
         [SerializeField] private PlayerInventory _playerInventory;
-
+        private CancellationTokenSource _cancellationTokenSource; 
+        
         private void Awake()
         {
+            _cancellationTokenSource = new CancellationTokenSource();
             _playerInventory.BalanceChanged += OnBalanceChanged;
         }
 
-        private void Start()
+        private async void Start()
         {
             Started?.Invoke();
+            await Task.Delay(15 * 60 * 1000);
+            if(_cancellationTokenSource.Token.IsCancellationRequested)return;
+            OnTimeIsOver();
         }
 
         private void OnDestroy()
         {
+            _cancellationTokenSource.Cancel();
             _playerInventory.BalanceChanged += OnBalanceChanged;
         }
 

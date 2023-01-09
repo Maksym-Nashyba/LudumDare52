@@ -5432,6 +5432,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1749827041}
+  - component: {fileID: 1749827042}
   m_Layer: 0
   m_Name: Bomb
   m_TagString: Untagged
@@ -5455,6 +5456,21 @@ Transform:
   m_Father: {fileID: 1686871388}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: -7.499, y: 133.821, z: -46.704}
+--- !u!114 &1749827042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1749827040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42e267b1878c46eeb3084e4fc7d053ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactor: {fileID: 1238306449}
+  _placedBombPrefab: {fileID: 1290962665607620004, guid: a32267fff814a5c4fae927f1fa7a014d,
+    type: 3}
 --- !u!1 &1774266818
 GameObject:
   m_ObjectHideFlags: 0

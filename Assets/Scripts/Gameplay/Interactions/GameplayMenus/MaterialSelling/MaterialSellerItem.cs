@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Gameplay.Interactions.GameplayMenus
+namespace Gameplay.Interactions.GameplayMenus.MaterialSelling
 {
     public class MaterialSellerItem : InventoryItem
     {

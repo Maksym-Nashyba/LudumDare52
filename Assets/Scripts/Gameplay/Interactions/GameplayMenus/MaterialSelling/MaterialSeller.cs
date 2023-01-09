@@ -3,7 +3,7 @@ using Inventory;
 using Misc;
 using UnityEngine;
 
-namespace Gameplay.Interactions.GameplayMenus
+namespace Gameplay.Interactions.GameplayMenus.MaterialSelling
 {
     public class MaterialSeller : MonoBehaviour, IInteractable
     {

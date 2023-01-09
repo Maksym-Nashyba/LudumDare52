@@ -6,7 +6,6 @@ namespace Gameplay.Interactions.Tools
 {
     public abstract class Tool : MonoBehaviour
     {
-        
         protected ChunkPool ChunkPool;
 
         protected virtual void Awake()

@@ -6,7 +6,7 @@ namespace Misc
 {
     public abstract class MenuDisplay : MonoBehaviour
     {
-        [SerializeField] protected VerticalLayoutGroup LayoutGroupTable;
+        [SerializeField] protected LayoutGroup LayoutGroupTable;
         [SerializeField] protected GameObject MenuItemPrefab;
         protected List<GameObject> MenuItems;
         

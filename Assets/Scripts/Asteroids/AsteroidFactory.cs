@@ -90,7 +90,7 @@ namespace Asteroids
         
         private AsteroidMaterial[] LoadMaterials()
         {
-            return Resources.LoadAll<AsteroidMaterial>("Materials");
+            return Resources.LoadAll<AsteroidMaterial>("Materials").Where(material => material.Spawns).ToArray();
         }
     }
 }

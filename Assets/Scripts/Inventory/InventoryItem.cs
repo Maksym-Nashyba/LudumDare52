@@ -13,7 +13,7 @@ namespace Inventory
 
         public virtual void Display(AsteroidMaterial material, int materialAmount)
         {
-            //_materialIcon.sprite = material.Icon; //TODO display material icon
+            _materialIcon.sprite = material.Sprite;
             _materialName.text = material.Name;
             _materialAmount.text = materialAmount.ToString();
         }

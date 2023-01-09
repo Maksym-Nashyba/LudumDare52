@@ -6,6 +6,13 @@ namespace Inventory
     public class InventoryDisplay : MenuDisplay
     {
         [SerializeField] protected PlayerInventory _playerInventory;
+        [SerializeField] private CanvasGroup _canvasGroup;
+        private bool _shown;
+        
+        private void Update()
+        {
+            if(Input.GetKeyDown(KeyCode.Tab))ToggleInventoryShown();
+        }
 
         protected virtual void Awake()
         {
@@ -19,7 +26,17 @@ namespace Inventory
 
         public void ToggleInventoryShown()
         {
-            gameObject.SetActive(!gameObject.activeSelf);
+            if (_shown)
+            {
+                _canvasGroup.alpha = 0;
+                _canvasGroup.interactable = false;
+            }
+            else
+            {
+                _canvasGroup.alpha = 1;
+                _canvasGroup.interactable = true;
+            }
+            _shown = !_shown;
         }
         
         protected override void BuildLayoutGroupTable()

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Asteroids;
 using Asteroids.Chunks;
+using Gameplay.Interactions.GameplayMenus.UpgradeShop;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,6 +11,7 @@ namespace Gameplay.Interactions.Tools
 {
     public class Vacuum : Tool
     {
+        [SerializeField] private UpgradeStation _upgrades;
         [SerializeField] private Interactor _interactor;
         [SerializeField] private SphereCollider _suckZone;
         [SerializeField] private SphereCollider _consumeZone;
@@ -26,6 +28,7 @@ namespace Gameplay.Interactions.Tools
             _container = new List<Chunk>(_containerSize);
             _suckZone.enabled = false;
             _colliderBuffer = new Collider[50];
+            _upgrades.VacuumUpgrade.Crafted += OnVacuumUpgraded;
         }
 
         private void Update()
@@ -36,6 +39,13 @@ namespace Gameplay.Interactions.Tools
             else if(Input.GetMouseButton(1)) Blow();
         }
 
+        private void OnVacuumUpgraded()
+        {
+            _upgrades.VacuumUpgrade.Crafted -= OnVacuumUpgraded;
+            _containerSize *= 2;
+            _container.Capacity = _containerSize;
+        }
+        
         private void OnTriggerEnter(Collider other)
         {
             if (!Input.GetMouseButton(0)) return;

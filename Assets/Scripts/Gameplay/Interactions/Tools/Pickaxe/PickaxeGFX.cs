@@ -11,14 +11,6 @@ namespace Gameplay.Interactions.Tools
         [SerializeField] private Transform _forwardTransform;
         [SerializeField] private Transform _rearTransform;
 
-        private void Awake()
-        {
-            _pickaxe.Hit.AddListener(() =>
-            {
-                
-            });
-        }
-
         private void Update()
         {
             float t = EaseFunctions.EaseOutQuart(_pickaxe.CurrentExtend);

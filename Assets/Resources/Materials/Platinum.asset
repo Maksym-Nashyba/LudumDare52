@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a2c5e0dfbe94cb4978a66a58048feaf, type: 3}
   m_Name: Platinum
   m_EditorClassIdentifier: 
+  _spawns: 1
   _name: Platinum
   _type: 0
+  _price: 0
   _rarity: 2
+  _sprite: {fileID: 0}
   _renderMaterial: {fileID: 2100000, guid: 070b265d6dfe689448dbfbefb4bfc50e, type: 2}
+  _biggerChunk: {fileID: 0}
+  _largeChunk: {fileID: 0}

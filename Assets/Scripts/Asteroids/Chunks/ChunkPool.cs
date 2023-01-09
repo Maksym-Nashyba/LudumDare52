@@ -37,6 +37,7 @@ namespace Asteroids.Chunks
         {
             Chunk chunk = _chuckPool.Get();
             chunk.ApplyMaterial(material);
+            chunk.BindToPool(this);
             chunk.transform.position = position;
         }
 

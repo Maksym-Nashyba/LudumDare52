@@ -82,7 +82,7 @@ namespace Asteroids
         private AsteroidMaterial PickMaterial()
         {
             float random01 = Random.Range(0f, 1f);
-            random01 = EaseFunctions.EaseInCirc(random01);
+            random01 = EaseFunctions.EaseInSine(random01);
             Rarity rarity = (Rarity)random01.Remap(0f, 1f, 0f, (float)Rarity.Max + 0.99f);
             AsteroidMaterial[] materialsWithRarity = _materials.Where(material => material.Rarity == rarity).ToArray();
             return materialsWithRarity[Random.Range(0, materialsWithRarity.Length)];

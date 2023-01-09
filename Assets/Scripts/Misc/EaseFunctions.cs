@@ -34,6 +34,11 @@ namespace Misc
             return 1 - Mathf.Sqrt(1 - Mathf.Pow(t, 2));
         }
 
+        public static float EaseInSine(float t)
+        {
+            return 1 - Mathf.Cos((t * Mathf.PI) / 2f);
+        }
+        
         public static float EaseOutElastic(float t)
         {
             float a = 2f * Mathf.PI / 3f;

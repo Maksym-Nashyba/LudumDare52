@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a2c5e0dfbe94cb4978a66a58048feaf, type: 3}
   m_Name: Stone
   m_EditorClassIdentifier: 
+  _spawns: 1
   _name: Stone
   _type: 0
   _price: 5
   _rarity: 0
+  _sprite: {fileID: 0}
   _renderMaterial: {fileID: 2100000, guid: 649d79c257288e741b856f59c30a2968, type: 2}
+  _biggerChunk: {fileID: 0}
+  _largeChunk: {fileID: 0}

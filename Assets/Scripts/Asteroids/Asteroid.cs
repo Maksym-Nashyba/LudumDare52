@@ -1,12 +1,14 @@
 using System;
 using System.Collections.Generic;
 using Gameplay.Interactions.Dragging;
+using Gameplay.OreBoxes;
+using Inventory;
 using Misc;
 using UnityEngine;
 
 namespace Asteroids
 {
-    public class Asteroid : MonoBehaviour, IDraggable
+    public class Asteroid : MonoBehaviour, IDraggable, ICollectableOre
     {
         [SerializeField] private Rigidbody _rigidbody;
         public event Action Destroyed;
@@ -60,6 +62,18 @@ namespace Asteroids
             }
 
             return rarestMaterial;
+        }
+
+        public MaterialType GetMaterialType()
+        {
+            return GetOuterLayer().Material.Type;
+        }
+
+        public void GetCollected(PlayerInventory inventory)
+        {
+            if(_asteroidLayers.Count>1 || GetOuterLayer().Material.Type != MaterialType.Crystal) return;
+            inventory.Add(GetOuterLayer().Material.LargeChunk, 1);
+            Destroy(gameObject);
         }
     }
 }

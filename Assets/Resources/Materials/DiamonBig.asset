@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a2c5e0dfbe94cb4978a66a58048feaf, type: 3}
-  m_Name: Diamon
+  m_Name: DiamonBig
   m_EditorClassIdentifier: 
-  _spawns: 1
-  _name: Diamond
+  _spawns: 0
+  _name: Big Diamond
   _type: 1
   _price: 0
   _rarity: 3

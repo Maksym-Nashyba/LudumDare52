@@ -1,5 +1,4 @@
-﻿using System;
-using Asteroids;
+﻿using Asteroids;
 using UnityEngine;
 
 namespace Gameplay.Interactions.Tools

@@ -42,6 +42,7 @@ namespace Inventory
 
         public int GetAmount(AsteroidMaterial material)
         {
+            if (!_materials.ContainsKey(material)) return 0;
             return _materials[material];
         }
 
@@ -63,6 +64,16 @@ namespace Inventory
             _materials[material] -= amount;
             if (_materials[material] == 0) _materials.Remove(material);
             Changed?.Invoke();
+        }
+        
+        public bool HasEnoughMaterials(RecipePart[] recipe)
+        {
+            foreach (RecipePart recipePart in recipe)
+            {
+                
+                if(recipePart.Amount > GetAmount(recipePart.Material)) return false;
+            }
+            return true;
         }
 
         private bool TryRemove(AsteroidMaterial material, int amount)

@@ -7,12 +7,33 @@ namespace Gameplay.Interactions.GameplayMenus.UIPanels
 {
     public class InstrumentSelectionDisplay : MonoBehaviour
     {
+        [SerializeField] private Interactor _interactor;
+        [SerializeField] private CanvasGroup _canvasGroup;
         [SerializeField] private InstrumentHolder _instruments;
         [SerializeField] private Image[] _icons;
         
         private void Awake()
         {
             _instruments.ToolChanged += OnToolChanged;
+            _interactor.Locked += OnInteractorLocked;
+            _interactor.Unlocked += OnInteractorUnlocked;
+        }
+
+        private void OnDestroy()
+        {
+            _instruments.ToolChanged -= OnToolChanged;
+            _interactor.Locked -= OnInteractorLocked;
+            _interactor.Unlocked -= OnInteractorUnlocked;
+        }
+
+        private void OnInteractorLocked()
+        {
+            _canvasGroup.alpha = 0f;
+        }
+        
+        private void OnInteractorUnlocked()
+        {
+            _canvasGroup.alpha = 1f;
         }
 
         private void OnToolChanged(Tool tool)

@@ -12,7 +12,13 @@ namespace Gameplay.Interactions.GameplayMenus.UIPanels
             _closeCallback?.Invoke();
             Destroy(gameObject);
         }
-        
+
+        private void Update()
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+
         public void Interact(Action closeCallback)
         {
             gameObject.SetActive(true);

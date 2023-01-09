@@ -30,7 +30,7 @@ namespace Gameplay.Interactions.GameplayMenus.AsteroidCatcher
         private void Update()
         {
             if (_closeCallback == null) return;
-            if (Input.GetKeyDown(KeyCode.Escape)) Close();
+            if (Input.GetKeyDown(KeyCode.E)) Close();
             if (_cameraTarget != null)
             {
                 _cameraTransform.LookAt(_cameraTarget);

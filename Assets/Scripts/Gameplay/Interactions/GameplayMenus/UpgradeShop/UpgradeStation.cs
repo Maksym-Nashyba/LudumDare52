@@ -26,16 +26,19 @@ namespace Gameplay.Interactions.GameplayMenus.UpgradeShop
         
         private Action _closeCallback;
 
+        private float _openTime;
+
         public void Interact(Action closeCallback)
         {
             _closeCallback = closeCallback;
             Interacted?.Invoke();
+            _openTime = Time.time;
         }
 
         private void Update()
         {
-            if (_closeCallback == null) return;
-            if (Input.GetKeyDown(KeyCode.Escape)) Close();
+            if (_closeCallback == null || Time.time - _openTime < 0.5f) return;
+            if (Input.GetKeyDown(KeyCode.E)) Close();
         }
 
         private void Close()

@@ -17,7 +17,7 @@ namespace Gameplay.Interactions.GameplayMenus.MaterialSelling
 
         private void Update()
         {
-            if(Input.GetKeyDown(KeyCode.Escape))_materialSeller.Hide();
+            if(Input.GetKeyDown(KeyCode.E))_materialSeller.Hide();
         }
 
         protected override void OnDestroy()

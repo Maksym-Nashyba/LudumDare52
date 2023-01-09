@@ -21,10 +21,16 @@ public class FirstPersonLook : MonoBehaviour
         _interactor.Unlocked += OnUnlocked;
     }
 
+    private void OnDestroy()
+    {
+        _interactor.Locked -= OnLocked;
+        _interactor.Unlocked -= OnUnlocked;
+    }
+    
     private void OnLocked()
     {
         _locked = true;
-        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
     
@@ -35,12 +41,6 @@ public class FirstPersonLook : MonoBehaviour
         Cursor.visible = false;
     }
 
-    private void OnDestroy()
-    {
-        _interactor.Locked -= OnLocked;
-        _interactor.Unlocked -= OnUnlocked;
-    }
-    
     void Reset()
     {
         // Get the character from the FirstPersonMovement in parents.

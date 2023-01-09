@@ -46,6 +46,8 @@ namespace Gameplay.Interactions
             {
                 Unlocked?.Invoke();
                 IsLocked = false;
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
             });
         }
 

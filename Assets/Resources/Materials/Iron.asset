@@ -17,7 +17,7 @@ MonoBehaviour:
   _type: 0
   _price: 300
   _rarity: 1
-  _sprite: {fileID: 0}
+  _sprite: {fileID: 21300000, guid: 8e4f5aecf43aa8c46bb31c7e42d1517b, type: 3}
   _renderMaterial: {fileID: 2100000, guid: 596cdae6f683b5a4ab22a7d286a69848, type: 2}
   _biggerChunk: {fileID: 0}
   _largeChunk: {fileID: 0}

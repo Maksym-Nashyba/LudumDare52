@@ -1,4 +1,6 @@
 ﻿using System;
+using Gameplay.Interactions.GameplayMenus.UpgradeShop;
+using UnityEditor.Rendering.Universal;
 using UnityEngine;
 
 namespace Gameplay.Interactions.Tools
@@ -9,7 +11,13 @@ namespace Gameplay.Interactions.Tools
         
         public Tool[] Tools => _tools;
         [SerializeField] private Tool[] _tools;
+        [SerializeField] private UpgradeStation _upgrades;
         private Tool _activeTool;
+
+        private void Start()
+        {
+            PickTool(0);
+        }
 
         private void Update()
         {
@@ -24,8 +32,11 @@ namespace Gameplay.Interactions.Tools
             else if (Input.GetKeyDown(KeyCode.Alpha3))
             {
                 PickTool(2);
+            }else if (Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                if(!_upgrades.PickaxeUpgrade.IsCrafted)return;
+                PickTool(3);
             }
-            
         }
 
         private void PickTool(int number)

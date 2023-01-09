@@ -15,6 +15,7 @@ namespace Gameplay.Interactions.GameplayMenus.UIPanels
         
         public void Interact(Action closeCallback)
         {
+            gameObject.SetActive(true);
             _closeCallback = closeCallback;
         }
     }

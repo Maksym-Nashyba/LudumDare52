@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Asteroids;
 using Misc;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Gameplay.Interactions.GameplayMenus.AsteroidCatcher
 {
@@ -14,6 +15,7 @@ namespace Gameplay.Interactions.GameplayMenus.AsteroidCatcher
         [SerializeField] private Transform _throwPoint;
         [SerializeField] private Transform _hangarPoint;
         private AsyncExecutor _asyncExecutor;
+        [SerializeField] private UnityEvent _laserSound;
 
         private void Awake()
         {
@@ -22,6 +24,7 @@ namespace Gameplay.Interactions.GameplayMenus.AsteroidCatcher
 
         public async Task Catch(Asteroid asteroid, CancellationToken cancellationToken)
         {
+            _laserSound.Invoke();
             ResetLaser();
             await MoveToTurnPoint();
             if(cancellationToken.IsCancellationRequested)return;

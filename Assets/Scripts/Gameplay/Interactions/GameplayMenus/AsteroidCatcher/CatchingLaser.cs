@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 using Asteroids;
 using Misc;
 using UnityEngine;
@@ -19,17 +20,23 @@ namespace Gameplay.Interactions.GameplayMenus.AsteroidCatcher
             _asyncExecutor = new AsyncExecutor();
         }
 
-        public async Task Catch(Asteroid asteroid)
+        public async Task Catch(Asteroid asteroid, CancellationToken cancellationToken)
         {
             ResetLaser();
             await MoveToTurnPoint();
+            if(cancellationToken.IsCancellationRequested)return;
             await TouchAsteroid(asteroid.transform);
+            if(cancellationToken.IsCancellationRequested)return;
             StopAsteroid(asteroid);
             await MoveAsteroidToTurnPoint(asteroid.transform);
+            if(cancellationToken.IsCancellationRequested)return;
             await MoveAsteroidToThrowPoint(asteroid.transform);
+            if(cancellationToken.IsCancellationRequested)return;
             await ThrowAsteroidIn(asteroid.transform);
+            if(cancellationToken.IsCancellationRequested)return;
             UnfreezeAsteroid(asteroid);
             await RetractLaser();
+            if(cancellationToken.IsCancellationRequested)return;
         }
 
         private Task RetractLaser()

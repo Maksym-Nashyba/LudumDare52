@@ -28,6 +28,11 @@ namespace Asteroids.Chunks
             }
         }
 
+        public void ReturnChunk(Chunk chunk)
+        {
+            _chuckPool.Release(chunk);
+        }
+
         private void SpawnChunk(AsteroidMaterial material, Vector3 position)
         {
             Chunk chunk = _chuckPool.Get();

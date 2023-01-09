@@ -9,13 +9,10 @@ namespace Asteroids
     public class Asteroid : MonoBehaviour, IDraggable
     {
         [SerializeField] private Rigidbody _rigidbody;
+        public event Action Destroyed;
         public event Action LayerDestroyed;
 
-        public Size Size    
-        {
-            get => _size;
-            private set => _size = value;
-        }
+        public Size Size => _size;
         private Size _size;
         public bool IsDestroyed { get; private set; }
         private Stack<AsteroidLayer> _asteroidLayers;
@@ -42,6 +39,7 @@ namespace Asteroids
             outerLayer.Destroy();
             IsDestroyed = !HasAnyLayers;
             LayerDestroyed?.Invoke();
+            if(IsDestroyed) Destroyed?.Invoke();
         }
 
         public Rigidbody GetRigidbody()

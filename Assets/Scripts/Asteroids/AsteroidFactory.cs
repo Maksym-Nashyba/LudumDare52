@@ -1,10 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.Collections;
 using System.Linq;
 using System.Reflection;
 using Asteroids.Meshes;
 using Misc;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -19,20 +17,6 @@ namespace Asteroids
         private void Awake()
         {
             _materials = LoadMaterials();
-        }
-
-        private void Start()
-        {
-            for (int i = 0; i < 5; i++)
-            {
-                SpawnShit();
-            }
-        }
-
-        private void SpawnShit()
-        {
-            Asteroid asteroid = BuildAsteroid();
-            asteroid.transform.position = Vector3.up;
         }
 
         public Asteroid BuildAsteroid()
